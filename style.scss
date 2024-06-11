@@ -1,0 +1,140 @@
+---
+---
+/****************/
+/* CUSTOM RULES */
+/****************/
+
+.image-container {
+  position: relative;
+  display: inline-block;
+}
+
+.project-image {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+}
+
+.banner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: darkblue; /* Blue background */
+  color: white;
+  padding: 2px 5px; /* Tight border around the text */
+  border-radius: 3px;
+  font-size: 12px;
+}
+
+.bibtex-entry {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin: 10px 0;
+}
+.bibtex-entry pre {
+  white-space: pre-wrap;
+}
+
+//
+// IMPORTS
+//
+
+//@import "reset";
+//@import "variables";
+// Syntax highlighting @import is at the bottom of this file
+
+/**************/
+/* BASE RULES */
+/**************/
+a {
+  color: #1772d0;
+  text-decoration: none;
+}
+
+a:focus,
+a:hover {
+  color: #f09228;
+  text-decoration: none;
+}
+
+body,
+td,
+th,
+tr,
+p,
+a {
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-size: 14px;
+  font-display: auto;
+}
+
+strong {
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-size: 14px;
+  font-display: auto;
+}
+
+h2 {
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-size: 22px;
+  font-display: auto;
+  font-weight: normal;
+  padding: 0px;
+  margin: 0px;
+  display:inline; 
+}
+
+h3 {
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  font-display: auto;
+  padding: 0px;
+  margin: 0px;
+  display:inline; 
+}
+
+h1 {
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-size: 32px;
+  font-weight: normal;
+  font-display: auto;
+  text-align: center;
+  padding: 0px;
+  margin-block-start: 14px;
+  margin-block-end: 14px;
+  margin-left: 0px;
+  margin-right: 0px;
+
+}
+
+.one {
+  width: 160px;
+  height: 160px;
+  position: relative;
+}
+
+.two {
+  width: 160px;
+  height: 160px;
+  position: absolute;
+  transition: opacity .2s ease-in-out;
+  -moz-transition: opacity .2s ease-in-out;
+  -webkit-transition: opacity .2s ease-in-out;
+}
+
+.fade {
+  transition: opacity .2s ease-in-out;
+  -moz-transition: opacity .2s ease-in-out;
+  -webkit-transition: opacity .2s ease-in-out;
+}
+
+span.highlight {
+  background-color: #ffffd0;
+}
+
+// Settled on moving the import of syntax highlighting to the bottom of the CSS
+// ... Otherwise it really bloats up the top of the CSS file and makes it difficult to find the start
+//@import "highlights";
+//@import "svg-icons";

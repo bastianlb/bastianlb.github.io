@@ -1,0 +1,17 @@
+---
+layout: post
+title:  "S3M: Scalable Statistical Shape Modeling through Unsupervised Correspondences"
+date:   2023-10-07
+image: /images/s3m_web_teaser.jpg
+categories: research
+author: "Lennart Bastian"
+authors: "<strong>Lennart Bastian*</strong>, Alexander Baumann*, Emily Hoppe, Vincent Bürgin, Ha Young Kim, Mahdi Saleh, Benjamin Busam, Nassir Navab"
+venue: "Medical Image Computing and Computer Assisted Intervention (<strong>MICCAI</strong>)"
+venue_short: "MICCAI"
+arxiv: https://arxiv.org/abs/2304.07515
+code: https://github.com/alexanderbaumann99/S3M
+website: https://github.com/alexanderbaumann99/S3M
+paper: https://link.springer.com/chapter/10.1007/978-3-031-43999-5_44
+---
+We propose an unsupervised method for statistical shape model (SSM) construction that utilizes functional correspondences to learn shape structures across population anatomies, demonstrating robustness to noisy and potentially scaling to larger patient populations without manual annotations.
+
