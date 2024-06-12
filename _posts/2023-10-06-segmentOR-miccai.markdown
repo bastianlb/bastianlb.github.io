@@ -12,4 +12,4 @@ arxiv: https://link.springer.com/chapter/10.1007/978-3-031-43996-4_6
 code: https://github.com/bastianlb/segmentOR
 website: https://bastianlb.github.io/segmentOR/
 ---
-DisguisOR improves the robustness of operating room video anonymization by leveraging multi-view data to accurately localize and anonymize individuals' faces in 3D, resulting in geometrically consistent privacy protection across all camera views.
+SegmentOR is a weakly-supervised 3D semantic segmentation method for operating room environments that leverages temporal consistency in 4D point cloud sequences to significantly reduce the annotation burden. We demonstrate the utility of the resulting segmentation maps for improving downstream surgical workflow analysis.
