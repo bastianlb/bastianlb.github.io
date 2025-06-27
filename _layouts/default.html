@@ -102,30 +102,46 @@ at Memorial Sloan Kettering Cancer Center developing computational tools for gen
               <br>
               <em>{{post.venue}}</em>, {{ post.date | date: "%Y" }}
               <br>
+              {% assign first_link = true %}
               {% if post.arxiv %}
-              <a href="{{post.arxiv}}">paper</a> /
+                {% unless first_link %} / {% endunless %}
+                <a href="{{post.arxiv}}">paper</a>
+                {% assign first_link = false %}
               {% endif %}
               {% if post.video %}
-              <a href="{{post.video}}">video</a> /
+                {% unless first_link %} / {% endunless %}
+                <a href="{{post.video}}">video</a>
+                {% assign first_link = false %}
               {% endif %}
               {% if post.code %}
-              <a href="{{post.code}}">code</a> /
+                {% unless first_link %} / {% endunless %}
+                <a href="{{post.code}}">code</a>
+                {% assign first_link = false %}
               {% endif %}
               {% if post.poster %}
-              <a href="{{post.poster}}">poster</a> /
+                {% unless first_link %} / {% endunless %}
+                <a href="{{post.poster}}">poster</a>
+                {% assign first_link = false %}
               {% endif %}
               {% if post.slides %}
-              <a href="{{post.slides}}">slides</a> /
+                {% unless first_link %} / {% endunless %}
+                <a href="{{post.slides}}">slides</a>
+                {% assign first_link = false %}
               {% endif %}
               {% if post.website %}
-              <a href="{{post.website}}">website</a> /
+                {% unless first_link %} / {% endunless %}
+                <a href="{{post.website}}">website</a>
+                {% assign first_link = false %}
               {% endif %}
               {% if post.youtube %}
-              <a href="{{post.youtube}}">youtube</a> /
+                {% unless first_link %} / {% endunless %}
+                <a href="{{post.youtube}}">youtube</a>
+                {% assign first_link = false %}
               {% endif %}
               {% if post.bibtex %}
-              <p>TODO: this requires jekyll hooks</p>
-              <a href="{{ site.url }}/assets/bibtex/{{ post.title | slugify }}.bib" download>bibtex</a> /
+                {% unless first_link %} / {% endunless %}
+                <a href="{{ site.url }}/assets/bibtex/{{ post.title | slugify }}.bib" download>bibtex</a>
+                {% assign first_link = false %}
               {% endif %}
               <p></p>
               <blockquote>
@@ -145,7 +161,7 @@ at Memorial Sloan Kettering Cancer Center developing computational tools for gen
             <td style="padding:0px">
               <br>
               <p style="text-align:center;font-size:small;">
-                Design adapted from <a style="font-size:small;" href="https://jonbarron.info">Jon Barron's website</a>
+                Design adapted from <a style="font-size:small;" href="https://jonbarron.info">here</a>
               </p>
             </td>
           </tr>
