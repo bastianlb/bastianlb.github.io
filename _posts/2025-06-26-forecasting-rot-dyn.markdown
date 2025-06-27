@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  ""
-date:   2025-07-01
+date:   2025-06-26
 image: /images/forecasting_rot_dyn_teaser.jpg
 categories: research
 author: "Lennart Bastian"

@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Beyond Role-Based Surgical Domain Modeling"
-date:   2025-06-27
+date:   2025-06-15
 image: /images/beyond_role_teaser.jpg
 categories: research
 author: "Lennart Bastian"
