@@ -12,4 +12,4 @@ arxiv: https://arxiv.org/abs/2506.06780
 # code: 
 # website: 
 ---
-We study the problem setting of forecasting on the rotation manifold SO(3). This leads to the proposed <emph>Savitzky-Golay Neural Controlled Differential Equations</emph> which learn data-driven priors on the manifold and excel at extrapolating rotational states.
+We study rotational forecasting on the manifold SO(3). This leads to the proposed <emph>Savitzky-Golay Neural Controlled Differential Equations</emph> which learn continuous data-driven priors on the manifold and excel at extrapolating rotational states.
