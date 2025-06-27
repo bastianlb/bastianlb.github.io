@@ -6,7 +6,7 @@ image: /images/beyond_role_teaser.jpg
 categories: research
 author: "Lennart Bastian"
 authors: "Tony Wang*, <strong>Lennart Bastian</strong>*, Tobias Czempiel, Christian Heiliger, Nassir Navab"
-venue: "Medical Image Analysis (<strong>MedIA</strong>) (Journal IF 10.7, <href='https://scholar.google.com/citations?view_op=top_venues&hl=en&vq=eng_computervisionpatternrecognition'>rank</href> among CV venues)"
+venue: "Medical Image Analysis (<strong>MedIA</strong>) (Journal IF 10.7, <a href='https://scholar.google.com/citations?view_op=top_venues&hl=en&vq=eng_computervisionpatternrecognition'>rank</a> among CV venues)"
 venue_short: "MedIA"
 arxiv: https://arxiv.org/abs/2411.03511
 # code:
