@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  ""
+title:  "Forecasting Continuous Non-Conservative Dynamical Systems in SO(3)"
 date:   2025-06-26
 image: /images/forecasting_rot_dyn_teaser.jpg
 categories: research
