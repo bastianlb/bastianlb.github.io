@@ -1,0 +1,15 @@
+---
+layout: post
+title:  "Beyond Complete Shapes: A Quantitative Evaluation of 3D Shape Matching Algorithms"
+date:   2025-06-01
+image: /images/beyond_complete_shapes_teaser.jpg
+categories: research
+author: "Lennart Bastian"
+authors: "Viktoria Ehm, Nafie El Amrani, Yizheng Xie, <strong>Lennart Bastian</strong>, Maolin Gao, Weikang Wang, Lu Sang, Dongliang Cao, Zorah Lähner, Daniel Cremers, Florian Bernard"
+venue: "Symposium on Graphics Processing (<strong>SGP</strong>)"
+venue_short: "SGP"
+arxiv: https://arxiv.org/abs/2411.03511
+code: https://github.com/NafieAmrani/BeCoS-Beyond-Complete-Shapes
+website: https://nafieamrani.github.io/BeCoS/
+---
+We present <emph>BeCoS</emph>, the first comprehensive benchmark and evaluation framework for the challenging but widely applicable problem setting of <strong>partial shape correspondence</strong>.
