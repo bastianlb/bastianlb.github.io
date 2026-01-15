@@ -30,27 +30,22 @@
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
           <tr style="padding:0px">
             <td style="padding:2.5%;width:40%;max-width:40%">
-              <img style="width:100%;max-width:100%" alt="profile photo" src="images/lennart_headshot_circle.jpg">
+              <img style="width:100%;max-width:100%" alt="profile photo" src="images/defense-sunset-circle.png">
             </td>
             <td style="padding:2.5%;width:60%;vertical-align:middle">
               <h1>
                 Lennart Bastian
               </h1>
 <p>
-I am currently a PhD student at the <a href="https://www.cs.cit.tum.de/camp/">Chair for Computer Aided Medical Procedures</a> (CAMP)
-in Munich supervised by <a href="https://www.cs.cit.tum.de/camp/members/cv-nassir-navab/nassir-navab/"> Prof. Dr. Nassir Navab</a>.
-Since May '23 I have been coordinating the <a href="https://www.cs.cit.tum.de/camp/research/surgical-data-science/">Surgical Data Science</a> team.
-<p>
-
-<p>
-I completed my M.Sc. in Applied Mathematics at the Technical University of Munich (TUM), with my thesis "SDP Solvers with Optimal Storage Requirements and Applications" under the supervision of <a href="https://www.math.cit.tum.de/en/math/people/professors/ulbrich-michael/">Prof. Dr. Michael Ulbrich</a>.
+I am a Research Fellow at Imperial College London, supported through the UK Royal Society <a href="https://royalsociety.org/news/2025/11/early-career-fellowships-2025/">Newton International Fellowship</a>.
+I work with the <a href="https://circle-group.github.io/">Circle Group</a> of Prof. Tolga Birdal, where we pursue topics at the intersection of geometry, topology, and machine learning.
 </p>
-
 <p>
-Previously, I obtained my Bachelor's degree in Mathematics and Computer Science from the New York University Courant Institute.
-I also worked as a software engineer at <a href="https://h2ometrics.com/">H2oMetrics</a>, a water management cloud startup,
-and as a research assistant at the <a href="https://www.mskcc.org/research-areas/labs/ross-levine"</a> Levine Lab </a>
-at Memorial Sloan Kettering Cancer Center developing computational tools for genetic analysis of patients with myeloid leukemias.
+I completed my PhD with highest distinction (<i>summa cum laude</i>) at the <a href="https://www.cs.cit.tum.de/camp/">Chair for Computer Aided Medical Procedures</a> (CAMP) in Munich, supervised by <a href="https://www.cs.cit.tum.de/camp/members/cv-nassir-navab/nassir-navab/">Prof. Nassir Navab</a>, where I also coordinated research of the <a href="https://www.cs.cit.tum.de/camp/research/surgical-data-science/">Surgical Data Science</a> team. 
+Prior to this, I conducted my M.Sc. in Applied Mathematics at the Technical University of Munich with an emphasis on optimization and statistics, and Bachelor's in Mathematics and Computer Science from New York University's Courant Institute.
+</p>
+<p>
+I also had previous stints in software and data science at <a href="https://h2ometrics.com/">H2oMetrics</a>, a cloud water management startup, and as a research assistant at the MSKCC <a href="https://www.mskcc.org/research-areas/labs/ross-levine">Levine Lab</a>, developing computational tools for the genetic analysis of patients with myeloid leukemias.
 </p>
               <p style="text-align:center">
                 <a target="_blank" href="https://mailhide.io/e/kALrRC4M"> Email</a> &nbsp;/&nbsp;
@@ -67,8 +62,8 @@ at Memorial Sloan Kettering Cancer Center developing computational tools for gen
             <td style="padding:2.5%;width:100%;vertical-align:middle">
               <h2>Selected Publications</h2>
               <p>
-              My research interests span 3D Computer Vision and Geometry in Machine Learning, including application areas such as surgical scene understanding and
-              studying shape deformation in both medical and general problem settings.</p>
+              My research interests span the application of ideas from geometry and topology in machine learning and computer vision, including application areas in medicine and biology, and shape analysis.
+              </p>
             </td>
           </tr>
         </table>
@@ -97,6 +92,85 @@ at Memorial Sloan Kettering Cancer Center developing computational tools for gen
               <h3>{{post.title}}</h3>
               <br>
 ---->
+              {{post.authors}}
+
+              <br>
+              <em>{{post.venue}}</em>, {{ post.date | date: "%Y" }}
+              <br>
+              {% assign first_link = true %}
+              {% if post.arxiv %}
+                {% unless first_link %} / {% endunless %}
+                <a href="{{post.arxiv}}">paper</a>
+                {% assign first_link = false %}
+              {% endif %}
+              {% if post.video %}
+                {% unless first_link %} / {% endunless %}
+                <a href="{{post.video}}">video</a>
+                {% assign first_link = false %}
+              {% endif %}
+              {% if post.code %}
+                {% unless first_link %} / {% endunless %}
+                <a href="{{post.code}}">code</a>
+                {% assign first_link = false %}
+              {% endif %}
+              {% if post.poster %}
+                {% unless first_link %} / {% endunless %}
+                <a href="{{post.poster}}">poster</a>
+                {% assign first_link = false %}
+              {% endif %}
+              {% if post.slides %}
+                {% unless first_link %} / {% endunless %}
+                <a href="{{post.slides}}">slides</a>
+                {% assign first_link = false %}
+              {% endif %}
+              {% if post.website %}
+                {% unless first_link %} / {% endunless %}
+                <a href="{{post.website}}">website</a>
+                {% assign first_link = false %}
+              {% endif %}
+              {% if post.youtube %}
+                {% unless first_link %} / {% endunless %}
+                <a href="{{post.youtube}}">youtube</a>
+                {% assign first_link = false %}
+              {% endif %}
+              {% if post.bibtex %}
+                {% unless first_link %} / {% endunless %}
+                <a href="{{ site.url }}/assets/bibtex/{{ post.title | slugify }}.bib" download>bibtex</a>
+                {% assign first_link = false %}
+              {% endif %}
+              <p></p>
+              <blockquote>
+              {{ post.excerpt }}
+              </blockquote>
+            </td>
+          </tr>
+          {% endif %}
+          {% endfor %}
+          {% endfor %}
+        </table>
+
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+          <tr>
+            <td style="padding:2.5%;width:100%;vertical-align:middle">
+              <h2>Preprints & Workshops</h2>
+            </td>
+          </tr>
+        </table>
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+
+          {% for post in site.posts %}
+          {% for cat in post.categories %}
+          {% if cat == 'preprint' %}
+          <tr>
+          <td style="padding:2.5%;width:25%;vertical-align:middle;min-width:120px">
+            <div class="image-container">
+              <img src="/tn{{post.image}}" alt="project image" class="project-image" />
+              <div class="banner">{{post.venue_short}}</div>
+            </div>
+          </td>
+          <td style="padding:2.5%;width:75%;vertical-align:middle">
+            <h3>{{post.title}}</h3>
+            <br>
               {{post.authors}}
 
               <br>

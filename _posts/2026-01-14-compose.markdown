@@ -1,0 +1,13 @@
+---
+layout: post
+title:  "COMPOSE: Hypergraph Cover Optimization for Multi-view 3D Human Pose Estimation"
+date:   2026-01-14
+image: /images/compose.jpg
+categories: preprint
+author: "Lennart Bastian"
+authors: "Tony Danjun Wang, Tolga Birdal, Nassir Navab, <strong>Lennart Bastian</strong>"
+venue: "Preprint"
+venue_short: "Preprint"
+arxiv: https://arxiv.org/abs/2601.09698
+---
+We reformulate multi-view 3D pose estimation as a hypergraph partitioning problem, introducing efficient geometric pruning to achieve up to 23% improvement in average precision over previous optimization-based methods.

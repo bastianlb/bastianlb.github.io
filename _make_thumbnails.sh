@@ -1,4 +1,8 @@
+shopt -s nullglob
 for file in images/*.{jpg,png}; do
-	[ ! -f "tn/$file" ] && convert "$file" -thumbnail 320x320 "tn/$file"
+	if [ -f "$file" ] && [ ! -f "tn/$file" ]; then
+		mkdir -p "tn/$(dirname "$file")"
+		magick "$file" -resize 320x320> -quality 90 "tn/$file"
+	fi
 done
 

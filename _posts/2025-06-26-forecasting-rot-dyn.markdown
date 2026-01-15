@@ -6,7 +6,7 @@ image: /images/forecasting_rot_dyn_teaser.jpg
 categories: research
 author: "Lennart Bastian"
 authors: "<strong>Lennart Bastian</strong>*, Mohammad Rashed*, Nassir Navab, Tolga Birdal"
-venue: "IEEE International Conference on Computer Vision (<strong>ICCV</strong>) - <strong><span style='color: #d4582a;'>Oral</span></strong>"
+venue: "IEEE International Conference on Computer Vision (<strong>ICCV</strong>) - <strong><span style='color: #d4582a;'>Oral (Top 2.6%) </span></strong>"
 venue_short: "ICCV (Oral)"
 oral: true
 arxiv: https://arxiv.org/abs/2508.07775

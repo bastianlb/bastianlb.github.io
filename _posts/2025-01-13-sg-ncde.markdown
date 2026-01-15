@@ -1,0 +1,13 @@
+---
+layout: post
+title:  "Continuous-Time SO(3) Forecasting with Savitzky-Golay Neural Controlled Differential Equations"
+date:   2025-01-13
+image: /images/sg-ncde.jpg
+categories: workshop
+author: "Lennart Bastian"
+authors: "<strong>Lennart Bastian</strong>, Mohammad Rashed, Nassir Navab, Tolga Birdal"
+venue: "CVPR 2025 Workshop on 4D Vision"
+venue_short: "CVPRW"
+arxiv: https://arxiv.org/abs/2506.06780
+---
+We combine Neural Controlled Differential Equations with Savitzky-Golay path guidance to model continuous-time rotational dynamics on SO(3), achieving improved long-term forecasting of rotational motion.
