@@ -1,7 +1,8 @@
 ---
 layout: post
+highlight: true
 title:  "Topological Neural Operators"
-date:   2026-06-08
+date:   2026-06-11
 image: /images/tno.png
 categories: preprint
 author: "Lennart Bastian"

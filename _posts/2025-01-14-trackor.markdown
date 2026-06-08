@@ -3,7 +3,7 @@ layout: post
 title:  "TrackOR: Towards Personalized Intelligent Operating Rooms Through Robust Tracking"
 date:   2025-01-14
 image: /images/trackor.jpg
-categories: preprint
+categories: workshop
 author: "Lennart Bastian"
 authors: "Tony Danjun Wang, Tobias Czempiel, Nassir Navab, <strong>Lennart Bastian</strong>"
 venue: "MICCAI COLAS Workshop - <strong><span style='color: #d4582a;'>Best Paper Award</span></strong>"

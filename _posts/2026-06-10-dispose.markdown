@@ -1,7 +1,8 @@
 ---
 layout: post
+highlight: true
 title:  "DisPOSE: Projected Polystochastic Diffusion for Self-Supervised 3D Multi-View Human Pose Estimation"
-date:   2026-06-07
+date:   2026-06-10
 image: /images/dispose.jpg
 categories: research
 author: "Lennart Bastian"

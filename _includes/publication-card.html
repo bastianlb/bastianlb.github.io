@@ -1,0 +1,36 @@
+{%- comment -%}
+  Renders one publication. Single source of truth for both the homepage
+  highlights and the full /publications/ list.
+  Params:
+    post          (required) the post object
+    show_abstract (optional) when truthy, renders the excerpt blockquote
+  Link fields & labels match CLAUDE.md (order matters; only set fields render):
+    webpage -> webpage | eprint -> arxiv | paper -> paper | arxiv -> paper
+    video | code | poster | slides | website | youtube | bibtex
+{%- endcomment -%}
+{% assign p = include.post %}
+<article class="pub-card" id="{{ p.title | slugify }}">
+  <figure class="pub-thumb">
+    <img src="{{ '/tn' | append: p.image | relative_url }}" alt="{{ p.title | strip_html }} teaser" loading="lazy">
+    {% if p.venue_short %}<figcaption class="banner{% if p.oral %} oral{% endif %}">{{ p.venue_short }}</figcaption>{% endif %}
+  </figure>
+  <div class="pub-body">
+    <h3 class="pub-title">{{ p.title }}</h3>
+    <p class="pub-authors">{{ p.authors }}</p>
+    <p class="pub-venue"><em>{{ p.venue }}</em>, {{ p.date | date: "%Y" }}</p>
+    <p class="pub-links">
+      {%- if p.webpage -%}<a href="{{ p.webpage }}" title="Webpage" aria-label="Webpage"><svg class="ico"><use href="#i-globe"></use></svg></a>{%- endif -%}
+      {%- if p.eprint -%}<a href="{{ p.eprint }}" title="arXiv" aria-label="arXiv"><svg class="ico"><use href="#i-arxiv"></use></svg></a>{%- endif -%}
+      {%- if p.paper -%}<a href="{{ p.paper }}" title="Paper" aria-label="Paper"><svg class="ico"><use href="#i-paper"></use></svg></a>{%- endif -%}
+      {%- if p.arxiv -%}<a href="{{ p.arxiv }}" title="Paper" aria-label="Paper"><svg class="ico"><use href="#i-arxiv"></use></svg></a>{%- endif -%}
+      {%- if p.video -%}<a href="{{ p.video }}" title="Video" aria-label="Video"><svg class="ico"><use href="#i-video"></use></svg></a>{%- endif -%}
+      {%- if p.code -%}<a href="{{ p.code }}" title="Code" aria-label="Code"><svg class="ico"><use href="#i-code"></use></svg></a>{%- endif -%}
+      {%- if p.poster -%}<a href="{{ p.poster }}" title="Poster" aria-label="Poster"><svg class="ico"><use href="#i-poster"></use></svg></a>{%- endif -%}
+      {%- if p.slides -%}<a href="{{ p.slides }}" title="Slides" aria-label="Slides"><svg class="ico"><use href="#i-slides"></use></svg></a>{%- endif -%}
+      {%- if p.website -%}<a href="{{ p.website }}" title="Website" aria-label="Website"><svg class="ico"><use href="#i-globe"></use></svg></a>{%- endif -%}
+      {%- if p.youtube -%}<a href="{{ p.youtube }}" title="YouTube" aria-label="YouTube"><svg class="ico"><use href="#i-youtube"></use></svg></a>{%- endif -%}
+      {%- if p.bibtex -%}<a href="{{ '/assets/bibtex/' | append: p.title | slugify | append: '.bib' | relative_url }}" download title="BibTeX" aria-label="BibTeX"><svg class="ico"><use href="#i-bibtex"></use></svg></a>{%- endif -%}
+    </p>
+    {% if include.show_abstract and p.excerpt %}<blockquote class="pub-abstract">{{ p.excerpt }}</blockquote>{% endif %}
+  </div>
+</article>

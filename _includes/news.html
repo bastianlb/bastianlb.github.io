@@ -1,0 +1,19 @@
+{%- comment -%}
+  Renders the "Recent Updates" feed from _data/news.yml (newest first).
+  Param: limit (optional) max entries to show; default 5.
+{%- endcomment -%}
+{% assign limit = include.limit | default: 5 %}
+{% assign items = site.data.news | sort: "date" | reverse %}
+{% if items and items.size > 0 %}
+<section id="news" class="news" aria-labelledby="news-heading">
+  <h2 id="news-heading">Recent Updates</h2>
+  <ul class="news-list">
+    {% for item in items limit: limit %}
+    <li>
+      <time datetime="{{ item.date | date: '%Y-%m-%d' }}">{{ item.date | date: "%b&nbsp;%Y" }}</time>
+      <span class="news-text">{% if item.link %}<a href="{{ item.link }}">{{ item.text }}</a>{% else %}{{ item.text }}{% endif %}</span>
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+{% endif %}

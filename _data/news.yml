@@ -1,0 +1,40 @@
+# Recent Updates — shown on the homepage, newest first (sorted by date automatically).
+# To post an update, add an entry. `link` is optional. `text` may contain inline
+# HTML such as <strong>...</strong>. Dates are YYYY-MM-DD.
+#
+# >>> These are placeholder examples drawn from your site — edit / replace them. <<<
+
+- date: 2026-06-05
+  text: "<a href='/publications/#topoor-a-unified-topological-scene-representation-for-the-operating-room'><strong>TopoOR</strong></a> accepted to MICCAI 2026 (Early Accept, Top 9%)."
+
+- date: 2026-02-15
+  text: "Co-leading <strong>TopoFound</strong>, a &pound;1.3m AIRR-funded grant."
+
+- date: 2026-02-01
+  text: "Moved to Imperial College London."
+  link: https://profiles.imperial.ac.uk/l.bastian
+
+- date: 2026-05-18
+  text: "Recognized as an <strong>Outstanding Reviewer</strong> for CVPR 2026 (Top 5%) and a <strong>Gold Reviewer</strong> for ICML 2026 (Top 25%)."
+
+- date: 2026-05-15
+  text: "Two papers &mdash; <a href='/publications/#dispose-projected-polystochastic-diffusion-for-self-supervised-3d-multi-view-human-pose-estimation'><strong>DisPOSE</strong></a> and <a href='/publications/#collapsed-effective-operators-for-higher-order-structures'><strong>Collapsed Effective Operators</strong></a> &mdash; accepted to ICML 2026."
+
+- date: 2025-09-01
+  text: "Awarded a UK Royal Society Newton International Fellowship (3% Funded)."
+  link: "https://royalsociety.org/news/2025/11/early-career-fellowships-2025/"
+
+- date: 2025-09-23
+  text: "Two papers recognized at the <strong>MICCAI COLAS Workshop</strong> in Daejeon &mdash; <a href='/publications/#trackor-towards-personalized-intelligent-operating-rooms-through-robust-tracking'><strong>TrackOR</strong></a> received the <strong>Best Paper Award</strong> and <a href='/publications/#mitigating-biases-in-surgical-operating-rooms-with-geometry'><strong>Mitigating Biases in Surgical Operating Rooms</strong></a> was selected as an Oral."
+
+- date: 2025-09-18
+  text: "<a href='/publications/#copresheaf-topological-neural-networks-a-generalized-deep-learning-framework'><strong>Copresheaf Topological Neural Networks</strong></a> accepted to NeurIPS 2025."
+
+- date: 2025-06-26
+  text: "<a href='/publications/#forecasting-continuous-non-conservative-dynamical-systems-in-so-3'><strong>Forecasting Rotational Dynamics in SO(3)</strong></a> accepted to ICCV 2025 as an Oral (Top 2.6%)."
+
+- date: 2025-05-10
+  text: "Recognized as an <strong>Outstanding Reviewer</strong> for CVPR 2025 (Top 5%)."
+
+- date: 2025-11-18
+  text: "Successfully defended my PhD thesis (<em>summa cum laude</em>)!"

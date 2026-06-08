@@ -1,145 +1,273 @@
 ---
 ---
-/****************/
-/* CUSTOM RULES */
-/****************/
+/* ============================================================
+   Lennart Bastian — academic site
+   Modern refresh: semantic, responsive, content-first.
+   Design lineage: Jon Barron's academic template.
+   ============================================================ */
 
-.image-container {
-  position: relative;
-  display: inline-block;
+:root {
+  --accent:       #1772d0;
+  --accent-hover: #f09228;
+  --ink:          #1a1a1a;
+  --muted:        #606060;
+  --faint:        #8a8a8a;
+  --rule:         #e7e7e7;
+  --bg:           #ffffff;
+  --card-bg:      #ffffff;
+  --chip-bg:      #f1f3f5;
+  --banner-bg:    #00008b;   /* darkblue, preserved */
+  --banner-oral:  #d4582a;   /* orange, preserved */
+  --measure:      860px;
+  --radius:       7px;
+  --font: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
-.project-image {
-  width: auto;
+@media (prefers-color-scheme: dark) {
+  :root {
+    --accent:   #62a8ef;
+    --ink:      #e8e8e8;
+    --muted:    #b2b2b2;
+    --faint:    #8c8c8c;
+    --rule:     #2c2f36;
+    --bg:       #15171c;
+    --card-bg:  #1b1e24;
+    --chip-bg:  #23272f;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover, a:focus { color: var(--accent-hover); }
+
+img { max-width: 100%; }
+
+h1, h2, h3 { line-height: 1.25; }
+
+blockquote { margin: 0; }
+
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
+
+/* ---- layout shell ---- */
+.page {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 4rem;
+}
+
+/* ---- top nav ---- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: baseline;
+  gap: 1rem 1.25rem;
+  flex-wrap: wrap;
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 0.7rem 1.25rem;
+  background: var(--bg);
+  border-bottom: 1px solid var(--rule);
+}
+.site-header .brand {
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--ink);
+  margin-right: auto;
+}
+.site-nav { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.4rem 1rem; }
+.site-nav a { color: var(--muted); font-size: 0.95rem; padding-bottom: 2px; }
+.site-nav a:hover { color: var(--accent-hover); }
+.site-nav a[aria-current="page"] { color: var(--ink); border-bottom: 2px solid var(--accent); }
+.site-nav .nav-ext { display: inline-flex; gap: 1rem; padding-left: 0.6rem; margin-left: 0.2rem; border-left: 1px solid var(--rule); }
+
+/* ---- hero ---- */
+.hero {
+  display: grid;
+  grid-template-columns: 210px 1fr;
+  gap: 1rem 2rem;
+  align-items: center;
+  margin: 1.5rem 0 2.25rem;
+}
+.hero-photo { width: 100%; border-radius: 50%; }
+.hero-text h1 { font-size: 2rem; font-weight: 700; margin: 0 0 0.6rem; }
+.hero-text p { margin: 0 0 0.7rem; }
+.hero-links { margin-top: 0.5rem !important; display: flex; gap: 1rem; align-items: center; }
+.hero-links .ico { width: 1.6rem; height: 1.6rem; }
+
+/* ---- news ---- */
+.news {
+  margin: 0 0 2.25rem;
+  padding: 1rem 1.1rem;
+  background: var(--chip-bg);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+}
+.news h2 { font-size: 1.15rem; font-weight: 700; margin: 0 0 0.6rem; }
+.news-list { list-style: none; margin: 0; padding: 0; }
+.news-list li { display: flex; gap: 0.9rem; padding: 0.3rem 0; align-items: baseline; }
+.news-list time {
+  flex: 0 0 5rem;
+  color: var(--faint);
+  font-size: 0.85rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.news-text { flex: 1; }
+
+/* ---- section heads ---- */
+.section-head { margin-bottom: 0.5rem; }
+.section-head h2,
+.page-title { font-size: 1.5rem; font-weight: 700; margin: 0 0 0.3rem; }
+.section-intro { color: var(--muted); margin: 0 0 0.5rem; }
+.page-head { margin-bottom: 1.25rem; }
+.page-sub { color: var(--muted); font-size: 0.95rem; margin: 0.2rem 0 0; }
+.legend { margin-left: 0.5rem; white-space: nowrap; font-size: 0.85rem; color: var(--faint); }
+.dot { display: inline-block; width: 0.7em; height: 0.7em; border-radius: 50%; vertical-align: middle; margin-right: 0.15em; }
+.dot-oral { background: var(--banner-oral); }
+
+/* ---- publication card ---- */
+.pub-list { display: flex; flex-direction: column; }
+.pub-card {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 1.25rem;
+  padding: 1.1rem 0;
+  border-bottom: 1px solid var(--rule);
+  align-items: start;
+  scroll-margin-top: 6rem; /* offset sticky .site-header when jumped to via #anchor */
+}
+.pub-thumb { position: relative; margin: 0; }
+.pub-thumb img {
+  width: 100%;
   height: auto;
-  max-width: 100%;
+  border-radius: var(--radius);
+  border: 1px solid var(--rule);
+  display: block;
 }
-
+@media (prefers-reduced-motion: no-preference) {
+  .pub-thumb img { transition: transform 0.15s ease; }
+  .pub-card:hover .pub-thumb img { transform: scale(1.02); }
+}
 .banner {
   position: absolute;
-  top: 0;
-  left: 0;
-  background-color: darkblue; /* Blue background */
-  color: white;
-  padding: 2px 5px; /* Tight border around the text */
+  top: 7px;
+  left: 7px;
+  background: var(--banner-bg);
+  color: #fff;
+  padding: 2px 6px;
   border-radius: 3px;
   font-size: 12px;
+  line-height: 1.3;
+}
+.banner.oral { background: var(--banner-bg); font-weight: 700; }
+
+.pub-title { font-size: 1.02rem; font-weight: 700; margin: 0 0 0.25rem; }
+.pub-authors { margin: 0.1rem 0; font-size: 0.93rem; }
+.pub-venue { margin: 0.1rem 0; font-size: 0.93rem; color: var(--muted); }
+.pub-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem;
+  margin: 0.5rem 0 0;
+}
+.pub-links a, .hero-links a {
+  display: inline-flex;
+  color: var(--muted);
+  border: 0;
+  transition: color 0.12s ease;
+}
+.pub-links a:hover, .hero-links a:hover { color: var(--accent); }
+
+/* ---- inline link icons ---- */
+.ico {
+  width: 1.4rem;
+  height: 1.4rem;
+  display: block;
+}
+.pub-abstract {
+  margin: 0.55rem 0 0;
+  padding-left: 0.85rem;
+  border-left: 3px solid var(--rule);
+  color: var(--muted);
+  font-size: 0.92rem;
 }
 
-.banner.oral {
-  background-color: #d4582a; /* Orange background for oral presentations */
-  font-weight: bold;
-}
+.see-all { margin-top: 1.25rem; font-weight: 700; }
 
-.bibtex-entry {
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
-  padding: 10px;
-  margin: 10px 0;
-}
-.bibtex-entry pre {
-  white-space: pre-wrap;
-}
-
-//
-// IMPORTS
-//
-
-//@import "reset";
-//@import "variables";
-// Syntax highlighting @import is at the bottom of this file
-
-/**************/
-/* BASE RULES */
-/**************/
-a {
-  color: #1772d0;
-  text-decoration: none;
-}
-
-a:focus,
-a:hover {
-  color: #f09228;
-  text-decoration: none;
-}
-
-body,
-td,
-th,
-tr,
-p,
-a {
-  font-family: 'Lato', Verdana, Helvetica, sans-serif;
-  font-size: 14px;
-  font-display: auto;
-}
-
-strong {
-  font-family: 'Lato', Verdana, Helvetica, sans-serif;
-  font-size: 14px;
-  font-display: auto;
-}
-
-h2 {
-  font-family: 'Lato', Verdana, Helvetica, sans-serif;
-  font-size: 22px;
-  font-display: auto;
-  font-weight: normal;
-  padding: 0px;
-  margin: 0px;
-  display:inline; 
-}
-
-h3 {
-  font-family: 'Lato', Verdana, Helvetica, sans-serif;
-  font-size: 14px;
+/* ---- year dividers (publications page) ---- */
+.year-divider {
+  font-size: 1.25rem;
   font-weight: 700;
-  font-display: auto;
-  padding: 0px;
-  margin: 0px;
-  display:inline; 
+  color: var(--faint);
+  margin: 1.6rem 0 0.2rem;
+  padding-bottom: 0.2rem;
+  border-bottom: 1px solid var(--rule);
+}
+.year-divider:first-child { margin-top: 0.5rem; }
+
+/* ---- filter chips ---- */
+.filter-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0 0 0.75rem; }
+.filter-chips button {
+  font-family: inherit;
+  font-size: 0.85rem;
+  color: var(--muted);
+  background: var(--chip-bg);
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  padding: 0.3rem 0.85rem;
+  cursor: pointer;
+}
+.filter-chips button:hover { color: var(--accent-hover); }
+.filter-chips button[aria-pressed="true"] {
+  color: #fff;
+  background: var(--accent);
+  border-color: var(--accent);
 }
 
-h1 {
-  font-family: 'Lato', Verdana, Helvetica, sans-serif;
-  font-size: 32px;
-  font-weight: normal;
-  font-display: auto;
-  text-align: center;
-  padding: 0px;
-  margin-block-start: 14px;
-  margin-block-end: 14px;
-  margin-left: 0px;
-  margin-right: 0px;
+.is-hidden { display: none !important; }
 
+/* ---- footer ---- */
+.site-footer { border-top: 1px solid var(--rule); margin-top: 2rem; }
+.site-footer p { text-align: center; font-size: 0.8rem; color: var(--faint); padding: 1.25rem 0; margin: 0; }
+
+/* ---- legacy helper kept for any old markup ---- */
+.bibtex-entry { background: var(--chip-bg); border: 1px solid var(--rule); padding: 10px; margin: 10px 0; }
+.bibtex-entry pre { white-space: pre-wrap; }
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width: 680px) {
+  body { font-size: 15px; }
+  .site-header { padding: 0.6rem 1rem; }
+  .site-header .brand { margin-right: auto; }
+  .hero {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+    gap: 0.5rem;
+  }
+  .hero-photo { max-width: 190px; }
+  .hero-text h1 { font-size: 1.7rem; }
+  .pub-card { grid-template-columns: 1fr; gap: 0.7rem; }
+  .pub-thumb { max-width: 360px; }
+  .news-list li { flex-direction: column; gap: 0.1rem; }
+  .news-list time { flex-basis: auto; }
 }
-
-.one {
-  width: 160px;
-  height: 160px;
-  position: relative;
-}
-
-.two {
-  width: 160px;
-  height: 160px;
-  position: absolute;
-  transition: opacity .2s ease-in-out;
-  -moz-transition: opacity .2s ease-in-out;
-  -webkit-transition: opacity .2s ease-in-out;
-}
-
-.fade {
-  transition: opacity .2s ease-in-out;
-  -moz-transition: opacity .2s ease-in-out;
-  -webkit-transition: opacity .2s ease-in-out;
-}
-
-span.highlight {
-  background-color: #ffffd0;
-}
-
-// Settled on moving the import of syntax highlighting to the bottom of the CSS
-// ... Otherwise it really bloats up the top of the CSS file and makes it difficult to find the start
-//@import "highlights";
-//@import "svg-icons";

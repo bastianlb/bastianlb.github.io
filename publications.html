@@ -1,0 +1,36 @@
+---
+layout: page
+title: Publications
+permalink: /publications/
+---
+<header class="page-head">
+  <h1 class="page-title">Publications</h1>
+  <p class="page-sub">
+    <strong>{{ site.posts | size }}</strong> papers. See also
+    <a href="https://scholar.google.com/citations?user=huXOVHgAAAAJ&hl=en">Google Scholar</a>.
+    <span class="legend"><span class="dot dot-oral"></span> oral / spotlight</span>
+  </p>
+</header>
+
+<div class="filter-chips" hidden role="group" aria-label="Filter publications by type">
+  <button type="button" data-filter="all" aria-pressed="true">All</button>
+  <button type="button" data-filter="research" aria-pressed="false">Conference &amp; Journal</button>
+  <button type="button" data-filter="preprint" aria-pressed="false">Preprints</button>
+  <button type="button" data-filter="workshop" aria-pressed="false">Workshops</button>
+</div>
+
+<div id="pub-list" class="pub-list">
+  {%- assign last_year = '' -%}
+  {%- for post in site.posts -%}
+    {%- assign year = post.date | date: '%Y' -%}
+    {%- if year != last_year -%}
+      <h2 class="year-divider" data-year="{{ year }}">{{ year }}</h2>
+      {%- assign last_year = year -%}
+    {%- endif -%}
+    <div class="pub-item" data-cat="{{ post.categories | join: ' ' }}" data-year="{{ year }}">
+      {% include publication-card.html post=post show_abstract=true %}
+    </div>
+  {%- endfor -%}
+</div>
+
+<script src="{{ '/assets/filter.js' | relative_url }}"></script>

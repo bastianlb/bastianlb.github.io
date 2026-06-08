@@ -1,5 +1,6 @@
 ---
 layout: post
+highlight: true
 title:  "Copresheaf Topological Neural Networks: A Generalized Deep Learning Framework"
 date:   2025-09-18
 image: /images/copresheaf.png

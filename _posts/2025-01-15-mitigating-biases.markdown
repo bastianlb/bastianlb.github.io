@@ -3,7 +3,7 @@ layout: post
 title:  "Mitigating Biases in Surgical Operating Rooms with Geometry"
 date:   2025-01-15
 image: /images/mitigating-biases.jpg
-categories: preprint
+categories: workshop
 author: "Lennart Bastian"
 authors: "Tony Danjun Wang, Tobias Czempiel, Nassir Navab, <strong>Lennart Bastian</strong>"
 venue: "MICCAI COLAS Workshop - <strong><span style='color: #d4582a;'>Oral (top 16%) </span></strong>"

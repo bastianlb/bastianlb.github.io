@@ -1,5 +1,6 @@
 ---
 layout: post
+highlight: true
 title:  "TopoOR: A Unified Topological Scene Representation for the Operating Room"
 date:   2026-06-05
 image: /images/topoor.png

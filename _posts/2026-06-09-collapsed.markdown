@@ -1,7 +1,8 @@
 ---
 layout: post
+highlight: true
 title:  "Collapsed Effective Operators for Higher-order Structures"
-date:   2026-06-06
+date:   2026-06-09
 image: /images/collapsed.jpg
 categories: research
 author: "Lennart Bastian"
