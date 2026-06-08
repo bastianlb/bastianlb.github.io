@@ -1,0 +1,13 @@
+---
+layout: post
+title:  "DisPOSE: Projected Polystochastic Diffusion for Self-Supervised 3D Multi-View Human Pose Estimation"
+date:   2026-06-07
+image: /images/dispose.jpg
+categories: research
+author: "Lennart Bastian"
+authors: "Tony Danjun Wang, Tolga Birdal, Nassir Navab, <strong>Lennart Bastian</strong>"
+venue: "International Conference on Machine Learning (<strong>ICML</strong>)"
+venue_short: "ICML"
+arxiv: https://arxiv.org/abs/2606.07419
+---
+We introduce <emph>DisPOSE</emph>, a self-supervised framework that approximates the discrete multi-view person-assignment problem as a generative diffusion process over polystochastic tensors, using differentiable Sinkhorn projections to guide solutions toward valid assignments from 2D image priors — retaining 99% of its performance with only 10% of the pseudo-labels and remaining nearly agnostic to camera arrangement.
