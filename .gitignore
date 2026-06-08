@@ -11,3 +11,4 @@ package.json
 favicon.ico
 vendor/
 .jekyll-cache/
+.claude
