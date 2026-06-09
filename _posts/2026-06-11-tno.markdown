@@ -9,5 +9,6 @@ author: "Lennart Bastian"
 authors: "<strong>Lennart Bastian</strong>, Samuel Leventhal, Mustafa Hajij, Tolga Birdal"
 venue: "Preprint"
 venue_short: "Preprint"
+eprint: https://arxiv.org/abs/2606.09806
 ---
 We introduce <emph>Topological Neural Operators</emph> (TNOs), a framework for operator learning on cell complexes that lifts neural operators from points and edges to topological domains. Using Discrete Exterior Calculus, TNOs decouple <em>where</em> information flows (fixed topological operators) from <em>how</em> it is transformed (learned), and the hierarchical variant (HTNOs) propagates long-range, topology-dependent information — improving accuracy across PDE benchmarks including irregular-geometry flows.

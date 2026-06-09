@@ -20,6 +20,8 @@
   --banner-oral:  #d4582a;   /* orange, preserved */
   --measure:      860px;
   --radius:       7px;
+  --bg-field-opacity: 0.72;  /* global intensity of the flow-field backdrop */
+  --bg-field-dot: #1772d0;   /* color of the animated dots (defaults to accent) */
   --font: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
@@ -29,16 +31,18 @@
     --ink:      #e8e8e8;
     --muted:    #b2b2b2;
     --faint:    #8c8c8c;
-    --rule:     #2c2f36;
-    --bg:       #15171c;
-    --card-bg:  #1b1e24;
+    --rule:     #2c3242;       /* neutral-ish divider, faintly blue to match the navy page */
+    --bg:       #0d1b2e;       /* very dark blue — deep navy, clearly blue, not black */
+    --card-bg:  #1b1e24;       /* cards/news kept as-is → lighter than the navy, so they pop */
     --chip-bg:  #23272f;
+    --bg-field-opacity: 0.72;  /* overall presence of the backdrop on the navy page */
+    --bg-field-dot: #88bef5;   /* lighter than the accent so the dots read brighter on navy */
   }
 }
 
 * { box-sizing: border-box; }
 
-html { -webkit-text-size-adjust: 100%; }
+html { -webkit-text-size-adjust: 100%; background: var(--bg); }
 
 body {
   margin: 0;
@@ -46,8 +50,26 @@ body {
   font-size: 16px;
   line-height: 1.6;
   color: var(--ink);
-  background: var(--bg);
+  background: transparent;   /* let the fixed .bg-field canvas show through */
   -webkit-font-smoothing: antialiased;
+}
+
+/* ---- animated flow-field backdrop ---- */
+.bg-field {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;            /* behind all content, above the html background */
+  display: block;
+  pointer-events: none;   /* never intercept clicks/selection */
+  opacity: 0;             /* faded in by JS once the first frame is drawn */
+  transition: opacity 1.2s ease;
+}
+.bg-field.is-ready { opacity: var(--bg-field-opacity); }
+
+@media (prefers-reduced-motion: reduce) {
+  .bg-field { transition: none; }
 }
 
 a { color: var(--accent); text-decoration: none; }
