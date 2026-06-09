@@ -4,18 +4,23 @@
   Params:
     post          (required) the post object
     show_abstract (optional) when truthy, renders the excerpt blockquote
+    link_to_pub   (optional) when truthy, the title & teaser link to this
+                  paper's anchor on /publications/ (used by the homepage)
   Link fields & labels match CLAUDE.md (order matters; only set fields render):
     webpage -> webpage | eprint -> arxiv | paper -> paper | arxiv -> paper
     video | code | poster | slides | website | youtube | bibtex
 {%- endcomment -%}
 {% assign p = include.post %}
+{% if include.link_to_pub %}{% assign pub_slug = p.title | slugify %}{% assign pub_href = '/publications/' | relative_url | append: '#' | append: pub_slug %}{% endif %}
 <article class="pub-card" id="{{ p.title | slugify }}">
   <figure class="pub-thumb">
+    {% if pub_href %}<a href="{{ pub_href }}" aria-label="{{ p.title | strip_html }} — see on publications page">{% endif %}
     <img src="{{ '/tn' | append: p.image | relative_url }}" alt="{{ p.title | strip_html }} teaser" loading="lazy">
     {% if p.venue_short %}<figcaption class="banner{% if p.oral %} oral{% endif %}">{{ p.venue_short }}</figcaption>{% endif %}
+    {% if pub_href %}</a>{% endif %}
   </figure>
   <div class="pub-body">
-    <h3 class="pub-title">{{ p.title }}</h3>
+    <h3 class="pub-title">{% if pub_href %}<a href="{{ pub_href }}">{{ p.title }}</a>{% else %}{{ p.title }}{% endif %}</h3>
     <p class="pub-authors">{{ p.authors }}</p>
     <p class="pub-venue"><em>{{ p.venue }}</em>, {{ p.date | date: "%Y" }}</p>
     <p class="pub-links">

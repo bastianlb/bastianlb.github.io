@@ -44,7 +44,7 @@
       {% assign highlights = site.posts | where: "highlight", true | sort: "date" | reverse %}
       <div class="pub-list">
         {% for post in highlights %}
-          {% include publication-card.html post=post %}
+          {% include publication-card.html post=post link_to_pub=true %}
         {% endfor %}
       </div>
       <p class="see-all"><a href="{{ '/publications/' | relative_url }}">See all publications &rarr;</a></p>

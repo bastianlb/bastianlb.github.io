@@ -6,11 +6,12 @@
    live Delaunay triangulation — a moving simplicial complex.
 
    While the page is idle, a global "order" anneals upward: points
-   lean toward a triangular lattice (its spacing varying with local
-   density, so triangle sizes stay heterogeneous) and the mesh
-   slowly tessellates. Scrolling shatters it — points are kicked
-   off their lattice sites, harder the faster you scroll — and the
-   order resets; then the points drift and it re-anneals.
+   push apart from their Delaunay neighbours toward an even local
+   spacing — no fixed grid, and the target spacing varies with local
+   density so triangle sizes stay heterogeneous — and the mesh settles
+   into a clean, organic tessellation. Scrolling shatters it: points
+   are kicked apart, harder the faster you scroll, and the order
+   resets; then they drift and it re-anneals.
 
    Theme-aware (reads the site's CSS custom properties), DPR-
    aware, pauses on a hidden tab, single static frame for
@@ -42,9 +43,10 @@
     latHi:       1.3,     // matching lattice spacing (× base) in the sparse/coarse zones
 
     // ---- idle anneal  ⇄  scroll shatter ----
-    regionScale: 0.0034,  // spatial variation of how strongly areas want to tessellate
-    maxTess:     0.6,     // ceiling on the lattice lean (stays loose — never a perfect tiling)
-    snap:        0.03,    // rate points approach the lattice once order is high
+    regionScale: 0.0034,  // spatial variation of the visual tessellation emphasis
+    maxTess:     0.6,     // ceiling on the visual tessellation emphasis
+    relax:       0.14,    // how firmly idle points push apart toward even spacing
+    relaxCap:    1.5,     // max relaxation nudge per frame (CSS px)
     orderGrow:   0.0022,  // how fast "order" builds while idle (~7.5s, 0→full)
     orderBreak:  0.5,     // how hard scrolling tears the tessellation back down
     shatter:     3.5,     // outward kick strength on scroll (× scroll speed)
@@ -114,6 +116,9 @@
     p.tess = 0;
     p.vx = 0;                                 // decaying shatter velocity
     p.vy = 0;
+    p.dx = 0;                                 // per-frame relaxation nudge
+    p.dy = 0;
+    p.ls = L;                                 // cached local spacing (set each frame)
     return p;
   }
 
@@ -182,15 +187,21 @@
     return order * CONFIG.maxTess * (0.5 + 0.5 * regionAt(x, y));
   }
 
-  // Nearest site of a triangular lattice with local spacing Ls
-  // (alternate rows offset by Ls/2).
-  function nearestSite(x, y, Ls, out) {
-    var rowH = Ls * 0.8660254;   // Ls * sqrt(3)/2
-    var row = Math.round(y / rowH);
-    var off = (row & 1) ? Ls / 2 : 0;
-    var col = Math.round((x - off) / Ls);
-    out.x = col * Ls + off;
-    out.y = row * rowH;
+  // Soft repulsion along a Delaunay edge: if two neighbours sit closer than
+  // the local target spacing, nudge them apart. Grid-free — the mesh just
+  // relaxes toward an even (but irregular) spacing wherever the points are,
+  // so triangles never bridge across empty space.
+  function relaxEdge(ia, ib, stiff) {
+    var a = particles[ia], b = particles[ib];
+    var dx = b.x - a.x, dy = b.y - a.y;
+    var len = Math.sqrt(dx * dx + dy * dy);
+    if (len < 0.001) return;
+    var r = 0.5 * (localSpacing(a.x, a.y) + localSpacing(b.x, b.y));
+    if (len >= r) return;                 // push apart only, never pull together
+    var push = (r - len) * stiff * 0.5;   // px each, toward even spacing
+    var ux = dx / len, uy = dy / len;
+    a.dx -= ux * push; a.dy -= uy * push;
+    b.dx += ux * push; b.dy += uy * push;
   }
 
   function fade(p) {
@@ -200,56 +211,57 @@
     return 1;
   }
 
-  var _site = { x: 0, y: 0 };
-  function update(dt) {
-    // Global order: anneals upward while idle, gets torn down in
-    // proportion to recent scroll speed.
+  function update(dt, tris) {
+    // Global order: anneals upward while idle, torn down by scroll speed.
     order += (CONFIG.orderGrow - scrollEnergy * CONFIG.orderBreak) * dt;
     if (order > 1) order = 1; else if (order < 0) order = 0;
+
+    // Relaxation: while ordered, points push apart from their Delaunay
+    // neighbours toward an even local spacing — no lattice, no grid.
+    for (var r0 = 0; r0 < particles.length; r0++) { particles[r0].dx = 0; particles[r0].dy = 0; }
+    var stiff = CONFIG.relax * order;
+    if (stiff > 0.0001 && tris) {
+      for (var t = 0; t < tris.length; t++) {
+        var T = tris[t];
+        relaxEdge(T[0], T[1], stiff);
+        relaxEdge(T[1], T[2], stiff);
+        relaxEdge(T[2], T[0], stiff);
+      }
+    }
 
     var damp = Math.pow(CONFIG.damping, dt);
     var kicking = scrollEnergy > 0.001;
     var cap = CONFIG.maxVel;
+    var rcap = CONFIG.relaxCap;
 
     for (var i = 0; i < particles.length; i++) {
       var p = particles[i];
-      var te = tessAt(p.x, p.y);
-      p.tess = te;
+      p.tess = tessAt(p.x, p.y);
 
       var f = coarseAt(p.x, p.y);
+      p.ls = L * (CONFIG.latLo + (CONFIG.latHi - CONFIG.latLo) * f);   // cache local spacing for render
       var sp = CONFIG.speed * (CONFIG.speedLo + (CONFIG.speedHi - CONFIG.speedLo) * f);
       var a = fieldAngle(p.x, p.y);
-      var fx = Math.cos(a) * sp;
-      var fy = Math.sin(a) * sp;
 
-      // intended drift: free flow blended toward the lattice by `te`
-      var mx, my;
-      if (te > 0.001) {
-        nearestSite(p.x, p.y, L * (CONFIG.latLo + (CONFIG.latHi - CONFIG.latLo) * f), _site);
-        var k = CONFIG.snap * te;
-        mx = fx * (1 - te) + (_site.x - p.x) * k;
-        my = fy * (1 - te) + (_site.y - p.y) * k;
-      } else {
-        mx = fx;
-        my = fy;
-      }
+      // clamp the accumulated relaxation nudge, then add it to the flow drift
+      var rx = p.dx, ry = p.dy;
+      if (rx > rcap) rx = rcap; else if (rx < -rcap) rx = -rcap;
+      if (ry > rcap) ry = rcap; else if (ry < -rcap) ry = -rcap;
+      var mx = Math.cos(a) * sp + rx;
+      var my = Math.sin(a) * sp + ry;
 
-      // Shatter: scrolling knocks points off their lattice sites — outward
-      // from the site (the bond breaks) plus jitter, harder the faster you scroll.
+      // Shatter: scrolling blows points apart — along the way their neighbours
+      // are pushing them (else along the flow), plus jitter, harder the faster
+      // you scroll.
       if (kicking) {
-        var kick = scrollEnergy * CONFIG.shatter * (0.25 + te);
-        var dx, dy;
-        if (te > 0.05) {
-          dx = p.x - _site.x;
-          dy = p.y - _site.y;
-          var d = Math.sqrt(dx * dx + dy * dy) || 1;
-          dx /= d; dy /= d;
-        } else {                                  // unbonded → scatter along the flow
-          dx = Math.cos(a); dy = Math.sin(a);
-        }
+        var kick = scrollEnergy * CONFIG.shatter * (0.25 + p.tess);
+        var dirx, diry;
+        var dl = Math.sqrt(p.dx * p.dx + p.dy * p.dy);
+        if (dl > 0.01) { dirx = p.dx / dl; diry = p.dy / dl; }
+        else { dirx = Math.cos(a); diry = Math.sin(a); }
         var j = CONFIG.shatterJitter;
-        p.vx += (dx + (Math.random() * 2 - 1) * j) * kick;
-        p.vy += (dy + (Math.random() * 2 - 1) * j) * kick;
+        p.vx += (dirx + (Math.random() * 2 - 1) * j) * kick;
+        p.vy += (diry + (Math.random() * 2 - 1) * j) * kick;
       }
 
       // decaying shatter velocity (clamped)
@@ -260,8 +272,8 @@
       p.x += (mx + p.vx) * dt;
       p.y += (my + p.vy) * dt;
 
-      // settled (tessellated) points hold still, so age them slowly
-      p.age += dt * (1 - 0.92 * te);
+      // settled points hold still, so age them slowly
+      p.age += dt * (1 - 0.92 * p.tess);
       if (p.age >= p.life ||
           p.x < -24 || p.x > W + 24 ||
           p.y < -24 || p.y > H + 24) {
@@ -345,18 +357,17 @@
   }
 
   // ---- render ---------------------------------------------------
-  function render() {
+  function render(tris) {
     ctx.clearRect(0, 0, W, H);
-    var tris = triangulate(particles);
 
-    // faint tint inside tessellated triangles → reads as a tiling
+    // faint tint inside well-formed tessellated triangles
     ctx.fillStyle = color.dot;
     for (var f = 0; f < tris.length; f++) {
       var tr = tris[f];
       var a = particles[tr[0]], b = particles[tr[1]], c = particles[tr[2]];
       var avg = (a.tess + b.tess + c.tess) / 3;
       if (avg < 0.12) continue;
-      var fAllow = CONFIG.edgeMax * localSpacing((a.x + b.x + c.x) / 3, (a.y + b.y + c.y) / 3);
+      var fAllow = CONFIG.edgeMax * Math.min(a.ls, b.ls, c.ls);   // cull by the finest vertex
       var fAllow2 = fAllow * fAllow;
       if (long2(a, b) > fAllow2 || long2(b, c) > fAllow2 || long2(c, a) > fAllow2) continue;
       ctx.globalAlpha = CONFIG.fillAlpha * avg * fade(a);
@@ -402,7 +413,7 @@
     seen[key] = 1;
     var a = particles[ia], b = particles[ib];
     var len = Math.sqrt(long2(a, b));
-    var allow = CONFIG.edgeMax * localSpacing((a.x + b.x) / 2, (a.y + b.y) / 2);
+    var allow = CONFIG.edgeMax * (a.ls < b.ls ? a.ls : b.ls);   // cull by the finer endpoint
     if (len > allow) return;
     var lenFactor = 1 - len / allow;                // shorter = stronger
     var te = (a.tess + b.tess) / 2;
@@ -420,9 +431,11 @@
     var saved = order;
     if (order < 0.6) order = 0.6;
     for (var i = 0; i < particles.length; i++) {
-      particles[i].tess = tessAt(particles[i].x, particles[i].y);
+      var p = particles[i];
+      p.tess = tessAt(p.x, p.y);
+      p.ls = localSpacing(p.x, p.y);
     }
-    render();
+    render(triangulate(particles));
     order = saved;
   }
 
@@ -439,8 +452,10 @@
     fieldT += CONFIG.timeScale * dt;
     curT = fieldT + (window.pageYOffset || 0) * CONFIG.scrollPhase;
 
-    update(dt);
-    render();
+    // one triangulation per frame, shared by relaxation (update) and drawing
+    var tris = triangulate(particles);
+    update(dt, tris);
+    render(tris);
     rafId = window.requestAnimationFrame(frame);
   }
 

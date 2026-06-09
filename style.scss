@@ -175,6 +175,7 @@ blockquote { margin: 0; }
   scroll-margin-top: 6rem; /* offset sticky .site-header when jumped to via #anchor */
 }
 .pub-thumb { position: relative; margin: 0; }
+.pub-thumb a { display: block; }
 .pub-thumb img {
   width: 100%;
   height: auto;
@@ -200,6 +201,8 @@ blockquote { margin: 0; }
 .banner.oral { background: var(--banner-bg); font-weight: 700; }
 
 .pub-title { font-size: 1.02rem; font-weight: 700; margin: 0 0 0.25rem; }
+.pub-title a { color: inherit; text-decoration: none; }
+.pub-title a:hover { text-decoration: underline; }
 .pub-authors { margin: 0.1rem 0; font-size: 0.93rem; }
 .pub-venue { margin: 0.1rem 0; font-size: 0.93rem; color: var(--muted); }
 .pub-links {
