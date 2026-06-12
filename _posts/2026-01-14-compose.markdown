@@ -8,6 +8,8 @@ author: "Lennart Bastian"
 authors: "Tony Danjun Wang, Tolga Birdal, Nassir Navab, <strong>Lennart Bastian</strong>"
 venue: "Preprint"
 venue_short: "Preprint"
-arxiv: https://arxiv.org/abs/2601.09698
+webpage: https://wngtn.github.io/COMPOSE/
+eprint: https://arxiv.org/abs/2601.09698
+code: https://github.com/wngTn/COMPOSE
 ---
 We reformulate multi-view 3D pose estimation as a hypergraph partitioning problem, introducing efficient geometric pruning to achieve up to 23% improvement in average precision over previous optimization-based methods.

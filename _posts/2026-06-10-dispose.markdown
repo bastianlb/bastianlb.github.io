@@ -9,6 +9,8 @@ author: "Lennart Bastian"
 authors: "Tony Danjun Wang, Tolga Birdal, Nassir Navab, <strong>Lennart Bastian</strong>"
 venue: "International Conference on Machine Learning (<strong>ICML</strong>)"
 venue_short: "ICML"
-arxiv: https://arxiv.org/abs/2606.07419
+webpage: https://wngtn.github.io/DisPOSE/
+eprint: https://arxiv.org/abs/2606.07419
+code: https://github.com/wngTn/DisPOSE
 ---
 We introduce <emph>DisPOSE</emph>, a self-supervised framework that approximates the discrete multi-view person-assignment problem as a generative diffusion process over polystochastic tensors, using differentiable Sinkhorn projections to guide solutions toward valid assignments from 2D image priors — retaining 99% of its performance with only 10% of the pseudo-labels and remaining nearly agnostic to camera arrangement.
