@@ -9,7 +9,7 @@ author: "Lennart Bastian"
 authors: "Tony Wang*, <strong>Lennart Bastian</strong>*, Tobias Czempiel, Christian Heiliger, Nassir Navab"
 venue: "Medical Image Analysis (<strong>MedIA</strong>) (Journal IF 10.7, <a href='https://scholar.google.com/citations?view_op=top_venues&hl=en&vq=eng_computervisionpatternrecognition'>rank</a> among CV venues)"
 venue_short: "MedIA"
-arxiv: https://arxiv.org/abs/2411.03511
+arxiv: https://arxiv.org/abs/2503.13028
 # code:
 # website:
 ---
