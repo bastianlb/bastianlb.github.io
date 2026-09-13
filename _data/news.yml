@@ -3,6 +3,9 @@
 # HTML such as <strong>...</strong>. Dates are YYYY-MM-DD.
 #
 # >>> These are placeholder examples drawn from your site — edit / replace them. <<<
+#
+- date: 2026-09-08
+  text: "We hosted the first edition of <a href='https://geo-int.github.io/'><strong>Geometric Intelligence</strong></a> at ECCV 2026 in Malmö, where I was also nominated outstanding reviewer (top 6.4%)"
 
 - date: 2026-05-10
   text: "<a href='/publications/#topoor-a-unified-topological-scene-representation-for-the-operating-room'><strong>TopoOR</strong></a> accepted to MICCAI 2026 (Early Accept, Top 9%)."
