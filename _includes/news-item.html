@@ -1,0 +1,8 @@
+{%- comment -%}
+  ONE news entry — shared by the homepage "Recent Updates" box and /news/.
+  Param: item (an entry from _data/news.yml).
+{%- endcomment -%}
+<li>
+  <time datetime="{{ include.item.date | date: '%Y-%m-%d' }}">{{ include.item.date | date: "%b&nbsp;%Y" }}</time>
+  <span class="news-text">{% if include.item.link %}<a href="{{ include.item.link }}">{{ include.item.text }}</a>{% else %}{{ include.item.text }}{% endif %}</span>
+</li>

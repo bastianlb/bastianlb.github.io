@@ -1,0 +1,24 @@
+---
+layout: page
+title: News
+permalink: /news/
+---
+<header class="page-head">
+  <h1 class="page-title">News</h1>
+</header>
+
+{%- assign items = site.data.news | sort: "date" | reverse -%}
+<div class="news-archive">
+  {%- assign last_year = '' -%}
+  {%- for item in items -%}
+    {%- assign year = item.date | date: '%Y' -%}
+    {%- if year != last_year -%}
+      {%- unless forloop.first %}</ul>{% endunless %}
+      <h2 class="year-divider" id="{{ year }}">{{ year }}</h2>
+      <ul class="news-list">
+      {%- assign last_year = year -%}
+    {%- endif -%}
+    {% include news-item.html item=item %}
+  {%- endfor -%}
+  {%- if items.size > 0 %}</ul>{% endif %}
+</div>
