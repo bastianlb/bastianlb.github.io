@@ -151,6 +151,12 @@ blockquote { margin: 0; }
   white-space: nowrap;
 }
 .news-text { flex: 1; }
+.news-actions { display: flex; flex-wrap: wrap; gap: 0.4rem 1.25rem; margin: 0.5rem 0 0; font-size: 0.95rem; font-weight: 700; }
+.news-toggle { font: inherit; color: var(--accent); background: none; border: 0; padding: 0; cursor: pointer; }
+.news-toggle:hover { color: var(--accent-hover); }
+.news-toggle::after { content: " \25BE"; }
+.news-toggle[aria-expanded="true"]::after { content: " \25B4"; }
+.news-archive .news-list { margin-top: 0.4rem; }
 
 /* ---- section heads ---- */
 .section-head { margin-bottom: 0.5rem; }
@@ -236,7 +242,7 @@ blockquote { margin: 0; }
 
 .see-all { margin-top: 1.25rem; font-weight: 700; }
 
-/* ---- year dividers (publications page) ---- */
+/* ---- year dividers (publications & news pages) ---- */
 .year-divider {
   font-size: 1.25rem;
   font-weight: 700;
