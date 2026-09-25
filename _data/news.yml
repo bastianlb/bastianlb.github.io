@@ -6,6 +6,9 @@
 # <strong>...</strong>), and an optional `link`. Pages also sort by date, so an
 # out-of-place entry still renders in the right spot.
 #
+- date: 2026-09-25
+  text: "<a href='/publications/#compose-hypergraph-cover-optimization-for-multi-view-3d-human-pose-estimation'><strong>COMPOSE</strong></a> accepted to NeurIPS 2026."
+
 - date: 2026-09-08
   text: "Co-hosted the first edition of <a href='https://geo-int.github.io/'><strong>Geometric Intelligence</strong></a> at ECCV 2026 in Malmö, where I was also nominated outstanding reviewer (Top 6.4%)"
 

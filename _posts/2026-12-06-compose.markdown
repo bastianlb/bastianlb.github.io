@@ -1,13 +1,14 @@
 ---
 layout: post
+highlight: true
 title:  "COMPOSE: Hypergraph Cover Optimization for Multi-view 3D Human Pose Estimation"
-date:   2026-01-14
+date:   2026-12-06
 image: /images/compose.jpg
-categories: preprint
+categories: research
 author: "Lennart Bastian"
 authors: "Tony Danjun Wang, Tolga Birdal, Nassir Navab, <strong>Lennart Bastian</strong>"
-venue: "Preprint"
-venue_short: "Preprint"
+venue: "Neural Information Processing Systems (<strong>NeurIPS</strong>)"
+venue_short: "NeurIPS"
 webpage: https://wngtn.github.io/COMPOSE/
 eprint: https://arxiv.org/abs/2601.09698
 code: https://github.com/wngTn/COMPOSE
