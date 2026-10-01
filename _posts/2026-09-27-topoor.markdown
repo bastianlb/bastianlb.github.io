@@ -2,14 +2,15 @@
 layout: post
 highlight: true
 title:  "TopoOR: A Unified Topological Scene Representation for the Operating Room"
-date:   2026-06-05
+date:   2026-09-27
 image: /images/topoor.png
 categories: research
 author: "Lennart Bastian"
 authors: "Tony Danjun Wang, Ka Young Kim, Tolga Birdal, Nassir Navab, <strong>Lennart Bastian</strong>"
-venue: "Medical Image Computing and Computer Assisted Intervention (<strong>MICCAI</strong>) - <strong><span style='color: #d4582a;'>Early Accept (Top 9%)</span></strong>"
+venue: "Medical Image Computing and Computer Assisted Intervention (<strong>MICCAI</strong>) - <strong><span style='color: #d4582a;'>Early Accept (Top 9%)</span></strong> &middot; <strong><span style='color: #b8860b;'>Young Scientist Award</span></strong>"
 venue_short: "MICCAI"
 oral: true
+webpage: https://wngtn.github.io/TopoOR/
 arxiv: https://arxiv.org/abs/2603.09466
 ---
 We model the surgical operating room as a multi-modal topological complex, introducing <emph>TopoOR</emph>, a unified scene representation that captures higher-order relationships between staff, instruments, and patient across imaging, audio, and spatial modalities for holistic surgical scene understanding.
